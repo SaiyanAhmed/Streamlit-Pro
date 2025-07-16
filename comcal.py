@@ -161,7 +161,7 @@ st.markdown("Here is your calculated commission:")
 st.dataframe(styled_df, use_container_width=True)
 
 # Prepare data for bar chart
-bar_df = pd.melt(df, value_vars=["Monthly GP ($)", "Monthly Commission ($)"],
+bar_df = pd.melt(df, value_vars=["Monthly Commission ($)"],
                  var_name="Metric", value_name="Amount")
 
 # Plot horizontal bar chart
@@ -171,16 +171,15 @@ fig = px.bar(
     x="Amount",
     orientation='h',
     text_auto='.2s',
-    title="Monthly GP vs. Monthly Commission",
+    title="Monthly Commission",
     color="Metric",
     color_discrete_map={
-        "Monthly GP ($)": "mediumseagreen",
         "Monthly Commission ($)": "steelblue"
     }
 )
 
 fig.update_layout(yaxis_title="", xaxis_title="Amount ($)", showlegend=False)
-st.subheader("📊 Monthly GP vs. Monthly Commission")
+st.subheader("📊 Monthly Commission")
 st.plotly_chart(fig, use_container_width=True)
 
 # --- Download Option ---
